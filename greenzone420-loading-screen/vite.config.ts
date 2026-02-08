@@ -15,6 +15,9 @@ export default defineConfig(({ mode }) => {
         outDir: 'html',
         emptyOutDir: true,
         assetsInlineLimit: 0, // Keep all assets as separate files for FiveM NUI
+        rollupOptions: {
+          external: ['@google/genai'],
+        },
       },
       define: {
         'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
