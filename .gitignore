@@ -1,6 +1,6 @@
 node_modules/
 dist/
-html/
+greenzone420-loading-screen/html/
 *.log
 .env
 .env.local

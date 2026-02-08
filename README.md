@@ -24,7 +24,7 @@ Premium Loading Screen für FiveM ESX Server mit AI-generierten RP-Tipps, Neon-�
 
 2. In das Projektverzeichnis wechseln und Abhängigkeiten installieren:
    ```bash
-   cd Ladebildschirm/greenzone420-loading-screen
+   cd Ladebildschirm
    npm install
    ```
 
@@ -38,7 +38,7 @@ Premium Loading Screen für FiveM ESX Server mit AI-generierten RP-Tipps, Neon-�
    npm run build
    ```
 
-5. Den gesamten `greenzone420-loading-screen` Ordner in den `resources/` Ordner deines FiveM Servers kopieren.
+5. Den `greenzone420-loading-screen` Ordner in den `resources/` Ordner deines FiveM Servers kopieren.
 
 6. In der `server.cfg` die Ressource aktivieren:
    ```cfg
@@ -52,7 +52,7 @@ Premium Loading Screen für FiveM ESX Server mit AI-generierten RP-Tipps, Neon-�
 Lokalen Entwicklungsserver starten (Browser-Vorschau mit simuliertem Ladefortschritt):
 
 ```bash
-cd greenzone420-loading-screen
+cd Ladebildschirm
 npm install
 npm run dev
 ```
@@ -62,22 +62,23 @@ npm run dev
 ## Projektstruktur
 
 ```
-greenzone420-loading-screen/
-├── fxmanifest.lua          # FiveM Resource-Manifest
-├── html/                   # Build-Output (wird von FiveM geladen)
-├── components/
-│   ├── Background.tsx      # Animierter Hintergrund
-│   ├── LoadingBar.tsx      # Fortschrittsbalken
-│   ├── MusicPlayer.tsx     # Musik-Player
-│   └── AiStatus.tsx        # AI-generierte Tipps
-├── services/
-│   └── geminiService.ts    # Google Gemini API Integration
-├── App.tsx                 # Hauptkomponente
-├── index.html              # HTML Entry-Point
-├── index.tsx               # React Entry-Point
-├── types.ts                # TypeScript Typen
-├── vite.config.ts          # Build-Konfiguration
-└── package.json            # Abhängigkeiten
+├── package.json                # Abhängigkeiten (nur für Build)
+├── vite.config.ts              # Build-Konfiguration
+├── tsconfig.json               # TypeScript-Konfiguration
+└── greenzone420-loading-screen/  # FiveM Resource
+    ├── fxmanifest.lua          # FiveM Resource-Manifest
+    ├── html/                   # Build-Output (wird von FiveM geladen)
+    ├── components/
+    │   ├── Background.tsx      # Animierter Hintergrund
+    │   ├── LoadingBar.tsx      # Fortschrittsbalken
+    │   ├── MusicPlayer.tsx     # Musik-Player
+    │   └── AiStatus.tsx        # AI-generierte Tipps
+    ├── services/
+    │   └── geminiService.ts    # Google Gemini API Integration
+    ├── App.tsx                 # Hauptkomponente
+    ├── index.html              # HTML Entry-Point
+    ├── index.tsx               # React Entry-Point
+    └── types.ts                # TypeScript Typen
 ```
 
 ## Anpassung
