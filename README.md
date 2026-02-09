@@ -34,14 +34,20 @@ An atmospheric FiveM loading screen experience blending themes of sacrifice, res
    npm install
    ```
 
-2. (Optional) Set the `GEMINI_API_KEY` in `.env.local` to your Gemini API key for dynamic quotes
-
-3. Run the development server:
+2. Run the development server:
    ```bash
    npm run dev
    ```
 
-4. Build for production:
+3. Build for production:
    ```bash
    npm run build
    ```
+
+## Features
+
+- Dynamic loading stages with thematic quotes
+- Atmospheric visual effects
+- Ritual circle animation
+- Progress tracking with visual indicators
+- Compatible with any Node.js version
