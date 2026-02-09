@@ -28,7 +28,7 @@ export default defineConfig(({ mode }) => {
       plugins: [react(), tailwindcss(), fivemHtmlPlugin()],
       base: './',
       build: {
-        outDir: path.resolve(__dirname, 'greenzone420-loading-screen/html'),
+        outDir: path.resolve(__dirname, '../html'),
         emptyOutDir: true,
         assetsInlineLimit: 0,
         modulePreload: false,
