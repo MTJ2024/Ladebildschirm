@@ -3,12 +3,12 @@ import React from 'react';
 const Background: React.FC = () => {
     return (
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-            {/* Base Image - Urban Night Scene */}
-            <img 
-                src="https://picsum.photos/seed/greenzone420/1920/1080" 
-                alt="GreenZone City" 
-                className="w-full h-full object-cover scale-110 animate-pulse-slow"
-                style={{ filter: 'brightness(0.4) contrast(1.2)' }}
+            {/* CSS-only dark city gradient background */}
+            <div 
+                className="w-full h-full"
+                style={{
+                    background: 'radial-gradient(ellipse at 50% 40%, #0a2e1a 0%, #061a0e 30%, #030d07 60%, #000000 100%)',
+                }}
             />
 
             {/* Green Vignette Overlay */}
@@ -21,7 +21,11 @@ const Background: React.FC = () => {
             {/* Scanlines Effect */}
             <div className="absolute inset-0 bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAADCAYAAABS3WWCAAAAE0lEQVQIW2NkYGD4zwABjFAQAwwCQAJ50e41AAAAAElFTkSuQmCC')] opacity-10 pointer-events-none"></div>
             
-            {/* Animated Smoke/Fog Effect (Simulated with gradients) */}
+            {/* Animated glow spots */}
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-green-500/5 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-green-600/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+            
+            {/* Animated Smoke/Fog Effect */}
             <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-green-900/20 to-transparent blur-3xl animate-pulse"></div>
         </div>
     );
