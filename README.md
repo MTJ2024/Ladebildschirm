@@ -21,6 +21,10 @@ npm run build
 
 ## FiveM Installation
 
+### ⚠️ WICHTIG: NUR dist/ Dateien kopieren!
+
+**FiveM soll NICHT versuchen zu builden!** Nur die fertigen Dateien kopieren.
+
 1. **Build the loading screen (npm only!):**
    ```bash
    npm install
@@ -28,7 +32,20 @@ npm run build
    ```
 
 2. **Copy to FiveM server:**
-   - Copy this entire folder to your FiveM `resources` directory
+   
+   **Option A - Nur notwendige Dateien (EMPFOHLEN):**
+   ```
+   resources/Ladebildschirm/
+   ├── fxmanifest.lua      ← Kopieren
+   └── dist/               ← Kompletten Ordner kopieren
+       ├── index.html
+       └── assets/
+   ```
+   
+   **Option B - Gesamten Ordner:**
+   - Kopiere den gesamten Ordner
+   - FiveM ignoriert automatisch package.json dank `.fxdkignore`
+   - `webpack_config 'nope'` verhindert Auto-Build
 
 3. **Add to your `server.cfg`:**
    ```
@@ -36,6 +53,11 @@ npm run build
    ```
 
 4. **Restart your FiveM server**
+
+### ❌ NICHT auf FiveM Server kopieren:
+- `package.json` - Triggert yarn auto-detection!
+- `node_modules/` - Nicht benötigt
+- Source files (`.tsx`, `.ts`) - Nicht benötigt
 
 ---
 
