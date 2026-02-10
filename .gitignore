@@ -3,8 +3,3 @@ dist
 .vite
 *.log
 .DS_Store
-
-# Yarn is FORBIDDEN - only npm allowed
-yarn.lock
-.yarn/
-.pnp.*

@@ -6,12 +6,10 @@
 
 FiveM Loading Screen for Greenzone420 Server
 
-## ⚠️ IMPORTANT: npm ONLY - NO YARN!
+## Installation & Build
 
-**❌ DO NOT USE YARN!**  
-Yarn does NOT work with FiveM loading screens and will break the resource!
+**Prerequisites:** Node.js with npm
 
-**✅ Use npm only:**
 ```bash
 npm install
 npm run build
@@ -25,7 +23,7 @@ npm run build
 
 **FiveM soll NICHT versuchen zu builden!** Nur die fertigen Dateien kopieren.
 
-1. **Build the loading screen (npm only!):**
+1. **Build the loading screen:**
    ```bash
    npm install
    npm run build
@@ -55,7 +53,7 @@ npm run build
 4. **Restart your FiveM server**
 
 ### ❌ NICHT auf FiveM Server kopieren:
-- `package.json` - Triggert yarn auto-detection!
+- `package.json` - Triggert auto-detection!
 - `node_modules/` - Nicht benötigt
 - Source files (`.tsx`, `.ts`) - Nicht benötigt
 
@@ -63,11 +61,7 @@ npm run build
 
 ## Run Locally for Development
 
-**Prerequisites:** Node.js with npm
-
-**❌ NEVER USE YARN - IT BREAKS FIVEM!**
-
-1. **Install dependencies (npm only!):**
+1. **Install dependencies:**
    ```bash
    npm install
    ```
@@ -86,25 +80,13 @@ npm run build
 
 ---
 
-## Why NO Yarn?
-
-- ❌ Yarn creates incompatible lockfiles for FiveM
-- ❌ Yarn's module resolution breaks FiveM resource loading
-- ❌ FiveM servers cannot process yarn.lock files
-- ✅ npm works perfectly with FiveM
-- ✅ npm creates compatible package-lock.json
-
-**The project has preinstall checks that will BLOCK yarn usage!**
-
----
-
 ## Features
 
 - Modern, bold design with large visual elements
 - Fire-themed ritual circle animation
 - Progressive loading stages
 - FiveM compatible loadscreen
-- **npm-only enforced** (yarn is blocked)
+- Pre-built for easy deployment
 
 ---
 
