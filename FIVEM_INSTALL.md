@@ -4,7 +4,7 @@
 
 ### ❌ PROBLEM: FiveM versucht zu builden!
 
-Wenn du den GANZEN Ordner kopierst, sieht FiveM `package.json` und versucht automatisch `yarn install` zu starten - **DAS GEHT NICHT!**
+Wenn du den GANZEN Ordner kopierst, sieht FiveM `package.json` und versucht automatisch einen Build zu starten - **DAS GEHT NICHT!**
 
 ### ✅ LÖSUNG: NUR diese Dateien kopieren!
 
@@ -51,15 +51,15 @@ FiveM Log sollte zeigen:
 Started resource Ladebildschirm
 ```
 
-**KEIN** `[script:yarn]` sollte erscheinen!
+**KEIN** Build-Prozess sollte starten!
 
 ---
 
 ## Was ist wenn du den ganzen Ordner kopierst?
 
-FiveM wird versuchen:
+FiveM wird versuchen zu builden:
 ```
-[script:yarn] yarn install v1.22.5
+[script:*] Building resource Ladebildschirm...
 Building resource Ladebildschirm failed.
 ```
 
