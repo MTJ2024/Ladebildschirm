@@ -77,14 +77,14 @@ const App: React.FC = () => {
       <div className="relative h-screen w-screen flex flex-col items-center justify-center bg-[#050101] text-white overflow-hidden p-6 text-center">
         <Atmosphere />
         <div className="z-10 animate-heartbeat">
-          <h1 className="font-cinzel text-7xl md:text-9xl mb-4 text-red-600 drop-shadow-[0_0_50px_rgba(153,27,27,0.6)] tracking-[0.4em] uppercase font-bold">
+          <h1 className="font-cinzel text-8xl md:text-[12rem] lg:text-[14rem] mb-8 text-red-500 drop-shadow-[0_0_60px_rgba(239,68,68,0.8)] tracking-[0.2em] uppercase font-black leading-none">
             GREENZONE420
           </h1>
-          <div className="w-64 h-[1px] bg-gradient-to-r from-transparent via-red-800 to-transparent mx-auto mb-8"></div>
-          <p className="text-xl md:text-2xl font-cinzel tracking-[0.5em] uppercase text-amber-50/70 mb-12 italic">
+          <div className="w-96 h-[3px] bg-gradient-to-r from-transparent via-red-600 to-transparent mx-auto mb-12"></div>
+          <p className="text-2xl md:text-4xl font-cinzel tracking-[0.3em] uppercase text-amber-100/80 mb-16 italic font-semibold">
             Die Blüte ist Erwacht
           </p>
-          <div className="text-[10px] font-cinzel text-red-950 uppercase tracking-[1em] animate-pulse">
+          <div className="text-base md:text-lg font-cinzel text-red-800/70 uppercase tracking-[0.4em] animate-pulse">
             Eintritt Gewährt
           </div>
         </div>
@@ -101,50 +101,50 @@ const App: React.FC = () => {
         <RitualCircle theme={currentStage.theme} progress={progress} />
       </div>
 
-      <div className="relative z-20 flex flex-col items-center max-w-5xl px-12 w-full">
+      <div className="relative z-20 flex flex-col items-center max-w-7xl px-8 w-full">
         
         {/* Poetic Header */}
-        <div className="mb-24 text-center">
-          <h2 className="font-cinzel text-red-950 text-[10px] md:text-xs tracking-[1.8em] mb-4 uppercase font-bold">
+        <div className="mb-16 text-center">
+          <h2 className="font-cinzel text-red-900/60 text-sm md:text-base tracking-[0.3em] mb-4 uppercase font-bold">
             Feuer • Asche • Neubeginn
           </h2>
-          <div className="h-[1px] w-64 mx-auto bg-gradient-to-r from-transparent via-red-900/30 to-transparent"></div>
+          <div className="h-[2px] w-80 mx-auto bg-gradient-to-r from-transparent via-red-800/50 to-transparent"></div>
         </div>
 
         {/* Narrative Section */}
-        <div className="text-center min-h-[200px] flex flex-col items-center justify-center">
-          <h1 className={`font-cinzel text-5xl md:text-8xl mb-8 transition-all duration-1000 uppercase tracking-[0.2em] font-black ${getThemeStyles()}`}>
+        <div className="text-center min-h-[250px] flex flex-col items-center justify-center">
+          <h1 className={`font-cinzel text-7xl md:text-[10rem] lg:text-[12rem] mb-10 transition-all duration-1000 uppercase tracking-wide font-black leading-none ${getThemeStyles()}`}>
             {currentStage.label}
           </h1>
-          <div className="h-[1px] w-16 bg-red-900/40 rounded-full mb-10"></div>
-          <div className="max-w-2xl px-6">
-            <p className="text-red-100/30 font-cinzel text-sm md:text-base tracking-[0.4em] leading-relaxed uppercase italic">
+          <div className="h-[2px] w-24 bg-red-800/60 rounded-full mb-12"></div>
+          <div className="max-w-3xl px-6">
+            <p className="text-red-100/40 font-cinzel text-lg md:text-xl tracking-[0.15em] leading-relaxed uppercase italic">
               "{dynamicQuote}"
             </p>
           </div>
         </div>
 
         {/* The Fire Loading Interface */}
-        <div className="w-full mt-24 relative px-16 max-w-4xl">
-          <div className="flex justify-between items-end mb-4 font-cinzel text-[10px] tracking-[0.5em] uppercase font-bold opacity-60">
-            <span className="text-red-900">{statusText}</span>
-            <span className="text-orange-500">{Math.round(progress)}%</span>
+        <div className="w-full mt-20 relative px-12 max-w-5xl">
+          <div className="flex justify-between items-end mb-6 font-cinzel text-base md:text-lg tracking-[0.2em] uppercase font-bold opacity-80">
+            <span className="text-red-800">{statusText}</span>
+            <span className="text-orange-400 text-2xl md:text-3xl font-black">{Math.round(progress)}%</span>
           </div>
           
-          <div className="h-[2px] w-full bg-red-950/20 relative overflow-hidden rounded-full border border-red-900/10 backdrop-blur-sm">
+          <div className="h-2 w-full bg-red-950/30 relative overflow-hidden rounded-full border-2 border-red-900/20 backdrop-blur-sm shadow-lg">
             <div 
-              className="h-full bg-gradient-to-r from-red-950 via-red-700 to-orange-500 transition-all duration-700 ease-out shadow-[0_0_20px_rgba(153,27,27,0.4)]"
+              className="h-full bg-gradient-to-r from-red-900 via-red-600 to-orange-400 transition-all duration-700 ease-out shadow-[0_0_30px_rgba(234,88,12,0.6)]"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
           
           {/* Petal Stage Indicators */}
-          <div className="flex justify-between mt-10 px-2 opacity-20">
+          <div className="flex justify-between mt-8 px-4 opacity-30">
             {LOADING_STAGES.map((_, i) => (
               <div 
                 key={i} 
-                className={`w-1.5 h-1.5 rotate-45 transition-all duration-1000 ${
-                  stageIndex >= i ? 'bg-orange-500 scale-125 border border-orange-400 shadow-[0_0_8px_#f97316]' : 'bg-red-950'
+                className={`w-3 h-3 rotate-45 transition-all duration-1000 ${
+                  stageIndex >= i ? 'bg-orange-400 scale-150 border-2 border-orange-300 shadow-[0_0_15px_#fb923c]' : 'bg-red-950'
                 }`}
               ></div>
             ))}
@@ -154,7 +154,7 @@ const App: React.FC = () => {
       
       {/* Bottom Footer */}
       <div className="absolute bottom-12 w-full text-center flex flex-col items-center gap-6">
-        <p className="text-[10px] text-red-950 uppercase tracking-[1.2em] font-cinzel font-bold">
+        <p className="text-sm text-red-900/60 uppercase tracking-[0.4em] font-cinzel font-bold">
           Greenzone420 • Michael • Lucifer
         </p>
       </div>

@@ -27,11 +27,11 @@ export const RitualCircle = ({ theme, progress }: { theme: string, progress: num
     <div className="relative flex items-center justify-center">
       {/* Warm Heartbeat Glow */}
       <div 
-        className="absolute w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-full blur-[100px] opacity-20 animate-heartbeat transition-all duration-2000"
+        className="absolute w-[450px] h-[450px] md:w-[700px] md:h-[700px] rounded-full blur-[120px] opacity-25 animate-heartbeat transition-all duration-2000"
         style={{ backgroundColor: colors.glow }}
       ></div>
 
-      <svg className={`crimson-glow w-64 h-64 md:w-[450px] md:h-[450px] transition-all duration-1000 ${colors.stroke}`} viewBox="0 0 200 200">
+      <svg className={`crimson-glow w-80 h-80 md:w-[600px] md:h-[600px] lg:w-[700px] lg:h-[700px] transition-all duration-1000 ${colors.stroke}`} viewBox="0 0 200 200">
         {/* Abstract Floral / Wing Petals */}
         <g className="animate-pulse">
           <path 
