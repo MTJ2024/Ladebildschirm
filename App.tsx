@@ -76,8 +76,8 @@ const App: React.FC = () => {
     return (
       <div className="relative h-screen w-screen flex flex-col items-center justify-center bg-[#050101] text-white overflow-hidden p-6 text-center">
         <Atmosphere />
-        <div className="z-10 animate-heartbeat">
-          <h1 className="font-cinzel text-8xl md:text-[12rem] lg:text-[14rem] mb-8 text-red-500 drop-shadow-[0_0_60px_rgba(239,68,68,0.8)] tracking-[0.2em] uppercase font-black leading-none">
+        <div className="z-10 animate-heartbeat max-w-full px-4">
+          <h1 className="font-cinzel text-8xl md:text-[10rem] lg:text-[11rem] xl:text-[12rem] mb-8 text-red-500 drop-shadow-[0_0_60px_rgba(239,68,68,0.8)] tracking-[0.2em] uppercase font-black leading-none max-w-full overflow-hidden">
             GREENZONE420
           </h1>
           <div className="w-96 h-[3px] bg-gradient-to-r from-transparent via-red-600 to-transparent mx-auto mb-12"></div>
@@ -113,7 +113,7 @@ const App: React.FC = () => {
 
         {/* Narrative Section */}
         <div className="text-center min-h-[250px] flex flex-col items-center justify-center">
-          <h1 className={`font-cinzel text-7xl md:text-[10rem] lg:text-[12rem] mb-10 transition-all duration-1000 uppercase tracking-wide font-black leading-none ${getThemeStyles()}`}>
+          <h1 className={`font-cinzel text-7xl md:text-[9rem] lg:text-[10rem] xl:text-[11rem] mb-10 transition-all duration-1000 uppercase tracking-wide font-black leading-none max-w-full ${getThemeStyles()}`}>
             {currentStage.label}
           </h1>
           <div className="h-[2px] w-24 bg-red-800/60 rounded-full mb-12"></div>
