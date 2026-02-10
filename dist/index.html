@@ -5,20 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Greenzone420 - Die Blüte des Feuers</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        /* System fonts - NO external dependencies for FiveM! */
+        @font-face {
+            font-family: 'Cinzel';
+            font-weight: 400 900;
+            font-style: normal;
+            font-display: swap;
+            src: local('Georgia'), local('Times New Roman'), local('serif');
+        }
+        
         body {
             margin: 0;
             padding: 0;
             overflow: hidden;
             background-color: #080202;
-            font-family: 'Inter', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
             color: #f8fafc;
         }
         .font-cinzel {
-            font-family: 'Cinzel Decorative', serif;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-weight: bold;
         }
         @keyframes heartbeat {
             0%, 100% { transform: scale(1); opacity: 0.4; }
@@ -44,17 +51,6 @@
             filter: drop-shadow(0 0 20px rgba(153, 27, 27, 0.4));
         }
     </style>
-
-<script type="importmap">
-{
-  "imports": {
-    "@google/genai": "https://esm.sh/@google/genai@^1.40.0",
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "react": "https://esm.sh/react@^19.2.4",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
-  }
-}
-</script>
   <script type="module" crossorigin src="/assets/index-ChMykeL3.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/index-C4kJ9iyg.css">
 </head>
