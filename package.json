@@ -3,7 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "packageManager": "npm@10.0.0",
+  "engines": {
+    "npm": ">=8.0.0",
+    "yarn": "DO NOT USE YARN - Use npm only! Yarn breaks FiveM loading screens!"
+  },
   "scripts": {
+    "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') !== -1) throw new Error('\\n\\n❌ YARN IS NOT ALLOWED!\\n\\n⚠️  This FiveM loading screen requires npm.\\n⚠️  Yarn does not work with FiveM!\\n\\n✅ Use: npm install\\n\\n')\"",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"

@@ -6,45 +6,75 @@
 
 FiveM Loading Screen for Greenzone420 Server
 
-View your app in AI Studio: https://ai.studio/apps/drive/19zx446wW67vi-4Vx9zPwOnWRH2oX4Ya8
+## ⚠️ IMPORTANT: npm ONLY - NO YARN!
+
+**❌ DO NOT USE YARN!**  
+Yarn does NOT work with FiveM loading screens and will break the resource!
+
+**✅ Use npm only:**
+```bash
+npm install
+npm run build
+```
+
+---
 
 ## FiveM Installation
 
-1. Build the loading screen:
+1. **Build the loading screen (npm only!):**
    ```bash
    npm install
    npm run build
    ```
 
-2. Copy this entire folder to your FiveM `resources` directory
+2. **Copy to FiveM server:**
+   - Copy this entire folder to your FiveM `resources` directory
 
-3. Add to your `server.cfg`:
+3. **Add to your `server.cfg`:**
    ```
    ensure Ladebildschirm
    ```
 
-4. Restart your FiveM server
+4. **Restart your FiveM server**
+
+---
 
 ## Run Locally for Development
 
-**Prerequisites:** Node.js (npm only, no yarn needed)
+**Prerequisites:** Node.js with npm
 
-1. Install dependencies:
+**❌ NEVER USE YARN - IT BREAKS FIVEM!**
+
+1. **Install dependencies (npm only!):**
    ```bash
    npm install
    ```
 
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key (optional for quotes)
+2. **Set the `GEMINI_API_KEY` in `.env.local`** (optional for quotes)
 
-3. Run the dev server:
+3. **Run dev server:**
    ```bash
    npm run dev
    ```
 
-4. Build for production:
+4. **Build for production:**
    ```bash
    npm run build
    ```
+
+---
+
+## Why NO Yarn?
+
+- ❌ Yarn creates incompatible lockfiles for FiveM
+- ❌ Yarn's module resolution breaks FiveM resource loading
+- ❌ FiveM servers cannot process yarn.lock files
+- ✅ npm works perfectly with FiveM
+- ✅ npm creates compatible package-lock.json
+
+**The project has preinstall checks that will BLOCK yarn usage!**
+
+---
 
 ## Features
 
@@ -52,4 +82,8 @@ View your app in AI Studio: https://ai.studio/apps/drive/19zx446wW67vi-4Vx9zPwOn
 - Fire-themed ritual circle animation
 - Progressive loading stages
 - FiveM compatible loadscreen
-- No yarn required - npm only
+- **npm-only enforced** (yarn is blocked)
+
+---
+
+View in AI Studio: https://ai.studio/apps/drive/19zx446wW67vi-4Vx9zPwOnWRH2oX4Ya8
