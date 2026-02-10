@@ -6,6 +6,10 @@
 
 An atmospheric FiveM loading screen experience blending themes of sacrifice, resurrection, and liberation, crafted with high-end visual aesthetics for Greenzone420.
 
+## Requirements
+
+**Node.js:** >= 16.0.0 (tested with FiveM's Node.js 16.9.1)
+
 ## FiveM Installation
 
 1. Install dependencies:
@@ -26,8 +30,6 @@ An atmospheric FiveM loading screen experience blending themes of sacrifice, res
    ```
 
 ## Development
-
-**Prerequisites:** Node.js
 
 1. Install dependencies:
    ```bash
@@ -50,4 +52,4 @@ An atmospheric FiveM loading screen experience blending themes of sacrifice, res
 - Atmospheric visual effects
 - Ritual circle animation
 - Progress tracking with visual indicators
-- Compatible with any Node.js version
+- Compatible with Node.js 16+ (including FiveM's Node.js 16.9.1)
