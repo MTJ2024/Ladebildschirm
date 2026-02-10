@@ -4,11 +4,29 @@ FiveM Loading Screen for Greenzone420 Server
 
 ## ⚠️ FiveM Installation - WICHTIG!
 
-**LESEN:** [FIVEM_INSTALL.md](FIVEM_INSTALL.md)
+### AUTOMATISCH (EMPFOHLEN):
 
-**Kurz:** Kopiere NUR `fxmanifest.lua` + `dist/` zum FiveM Server!
+```bash
+# 1. Build
+npm install
+npm run build
 
-**NICHT** den ganzen Ordner kopieren - sonst versucht FiveM zu builden!
+# 2. Erstelle FiveM Package (OHNE package.json!)
+./create-fivem-package.sh
+
+# 3. Kopiere Ladebildschirm_FiveM/ zum Server
+# resources/Ladebildschirm_FiveM/
+
+# 4. server.cfg
+ensure Ladebildschirm_FiveM
+```
+
+### MANUELL:
+
+**Siehe:** [FIVEM_INSTALL.md](FIVEM_INSTALL.md)
+
+**Wichtig:** NUR `fxmanifest.lua` + `dist/` kopieren!  
+**NICHT** `package.json` kopieren - sonst versucht FiveM zu builden!
 
 ---
 

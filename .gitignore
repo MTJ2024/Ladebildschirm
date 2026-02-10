@@ -3,3 +3,6 @@ dist
 .vite
 *.log
 .DS_Store
+
+# FiveM Deployment Package (erstellt von create-fivem-package.sh)
+Ladebildschirm_FiveM/
