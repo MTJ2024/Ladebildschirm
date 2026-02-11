@@ -3,7 +3,7 @@ game 'gta5'
 
 author 'MTJ2024'
 description 'Greenzone420 - Die Blüte des Feuers Loading Screen'
-version '1.0.0'
+version '1.0.1'
 
 loadscreen 'dist/index.html'
 
