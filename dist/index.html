@@ -51,10 +51,17 @@
             filter: drop-shadow(0 0 20px rgba(153, 27, 27, 0.4));
         }
     </style>
-  <script type="module" crossorigin src="/assets/index-NlMZM871.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-CKRd3GgF.css">
+  <script type="module" src="assets/index-NlMZM871.js"></script>
+  <link rel="stylesheet" href="assets/index-CKRd3GgF.css">
 </head>
 <body>
-    <div id="root"></div>
+    <div id="root">
+        <!-- Fallback loading screen visible until React mounts -->
+        <div id="fallback-loader" style="position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#080202;color:#f8fafc;font-family:Georgia,'Times New Roman',serif;z-index:9999;">
+            <h1 style="font-size:4rem;color:#ef4444;text-transform:uppercase;letter-spacing:0.2em;font-weight:900;text-shadow:0 0 60px rgba(239,68,68,0.8);margin-bottom:1rem;">GREENZONE420</h1>
+            <div style="width:300px;height:3px;background:linear-gradient(to right,transparent,#dc2626,transparent);margin-bottom:2rem;"></div>
+            <p style="color:#7f1d1d;text-transform:uppercase;letter-spacing:0.3em;font-size:0.875rem;">Laden...</p>
+        </div>
+    </div>
 </body>
 </html>
