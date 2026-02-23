@@ -1,54 +1,70 @@
 
 import React, { useEffect, useState } from 'react';
 
+interface Particle {
+  id: number;
+  left: number;
+  size: number;
+  dur: number;
+  color: string;
+  delay: number;
+}
+
 const Atmosphere: React.FC = () => {
-  const [petals, setPetals] = useState<{id: number, left: number, size: number, dur: number, color: string, rot: number}[]>([]);
+  const [particles, setParticles] = useState<Particle[]>([]);
 
   useEffect(() => {
+    const neonColors = ['#00F0FF', '#FF0066', '#7B2FBE', '#FFB800', '#00F0FF'];
     const interval = setInterval(() => {
-      setPetals(prev => [
-        ...prev.slice(-40), 
+      setParticles(prev => [
+        ...prev.slice(-50), 
         { 
           id: Date.now(), 
           left: Math.random() * 100,
-          size: Math.random() * 6 + 4,
-          dur: Math.random() * 6 + 6,
-          color: Math.random() > 0.5 ? '#991b1b' : '#ea580c',
-          rot: Math.random() * 360
+          size: Math.random() * 3 + 1,
+          dur: Math.random() * 8 + 5,
+          color: neonColors[Math.floor(Math.random() * neonColors.length)],
+          delay: Math.random() * 2
         }
       ]);
-    }, 400);
+    }, 300);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#080202]">
-      {/* Deep Rooted Glow */}
-      <div className="absolute inset-x-0 bottom-0 h-[60vh] opacity-20 bg-[radial-gradient(ellipse_at_50%_100%,#450a0a_0%,transparent_80%)]"></div>
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#0a0a0f]">
+      {/* City gradient base */}
+      <div className="absolute inset-x-0 bottom-0 h-[40vh] opacity-30 bg-[radial-gradient(ellipse_at_50%_100%,#1a0030_0%,transparent_70%)]"></div>
       
-      {/* Rising Fire-Petals */}
-      {petals.map(p => (
+      {/* Top neon bleed */}
+      <div className="absolute inset-x-0 top-0 h-[30vh] opacity-10 bg-[radial-gradient(ellipse_at_50%_0%,#00F0FF_0%,transparent_60%)]"></div>
+
+      {/* Floating neon particles */}
+      {particles.map(p => (
         <div
           key={p.id}
-          className="fire-petal"
+          className="neon-particle"
           style={{
             left: `${p.left}%`,
             width: `${p.size}px`,
-            height: `${p.size * 1.5}px`,
+            height: `${p.size}px`,
             backgroundColor: p.color,
-            boxShadow: `0 0 15px ${p.color}66`,
+            boxShadow: `0 0 ${p.size * 4}px ${p.color}88`,
             animationDuration: `${p.dur}s`,
-            transform: `rotate(${p.rot}deg)`,
-            opacity: 0.5
+            animationDelay: `${p.delay}s`,
+            opacity: 0.6
           }}
         />
       ))}
 
-      {/* Heavy Vignette */}
-      <div className="absolute inset-0 shadow-[inset_0_0_200px_rgba(0,0,0,1)]"></div>
+      {/* Scanlines overlay */}
+      <div className="absolute inset-0 scanlines opacity-[0.03]"></div>
+
+      {/* Heavy vignette */}
+      <div className="absolute inset-0 shadow-[inset_0_0_250px_rgba(0,0,0,1)]"></div>
       
-      {/* Texture Layer */}
-      <div className="absolute inset-0 opacity-[0.04] bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')]"></div>
+      {/* Noise grain texture */}
+      <div className="absolute inset-0 opacity-[0.06] bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]"></div>
     </div>
   );
 };

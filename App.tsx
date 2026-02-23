@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Atmosphere from './components/Atmosphere';
-import { RitualCircle, LOADING_STAGES } from './constants';
+import { HexGrid, LOADING_STAGES } from './constants';
 import { AppState } from './types';
 import { getThematicQuote } from './services/geminiService';
 
@@ -9,8 +9,8 @@ const App: React.FC = () => {
   const [progress, setProgress] = useState(0);
   const [stageIndex, setStageIndex] = useState(0);
   const [appState, setAppState] = useState<AppState>(AppState.LOADING);
-  const [dynamicQuote, setDynamicQuote] = useState("In der Asche ruht die Pracht...");
-  const [statusText, setStatusText] = useState("Wurzeln schlagen...");
+  const [dynamicQuote, setDynamicQuote] = useState("Die Straße vergisst nie...");
+  const [statusText, setStatusText] = useState("Verbindung wird hergestellt...");
 
   const updateQuote = useCallback(async (stageLabel: string) => {
     const quote = await getThematicQuote(stageLabel);
@@ -62,106 +62,158 @@ const App: React.FC = () => {
 
   const currentStage = LOADING_STAGES[stageIndex];
 
-  const getThemeStyles = () => {
+  const getThemeColor = () => {
     switch (currentStage.theme) {
-      case 'awakening': return 'text-red-900';
-      case 'purification': return 'text-red-700';
-      case 'enlightenment': return 'text-orange-600 drop-shadow-[0_0_15px_rgba(234,88,12,0.4)]';
-      case 'arrival': return 'text-amber-100 brightness-125';
-      default: return 'text-red-500';
+      case 'heist': return '#00F0FF';
+      case 'chase': return '#FF0066';
+      case 'empire': return '#FFB800';
+      case 'takeover': return '#7B2FBE';
+      case 'reign': return '#00F0FF';
+      default: return '#00F0FF';
     }
   };
 
   if (appState === AppState.READY) {
     return (
-      <div className="relative h-screen w-screen flex flex-col items-center justify-center bg-[#050101] text-white overflow-hidden p-6 text-center">
+      <div className="relative h-screen w-screen flex flex-col items-center justify-center bg-[#0a0a0f] text-white overflow-hidden p-6 text-center">
         <Atmosphere />
-        <div className="z-10 animate-heartbeat">
-          <h1 className="font-cinzel text-7xl md:text-9xl mb-4 text-red-600 drop-shadow-[0_0_50px_rgba(153,27,27,0.6)] tracking-[0.4em] uppercase font-bold">
+        <div className="z-10 animate-slide-in">
+          {/* Main title */}
+          <h1 className="font-bebas text-8xl md:text-[12rem] leading-none mb-2 tracking-[0.15em] uppercase animate-pulse-glow"
+              style={{ color: '#00F0FF' }}>
             GREENZONE420
           </h1>
-          <div className="w-64 h-[1px] bg-gradient-to-r from-transparent via-red-800 to-transparent mx-auto mb-8"></div>
-          <p className="text-xl md:text-2xl font-cinzel tracking-[0.5em] uppercase text-amber-50/70 mb-12 italic">
-            Die Blüte ist Erwacht
-          </p>
-          <div className="text-[10px] font-cinzel text-red-950 uppercase tracking-[1em] animate-pulse">
-            Eintritt Gewährt
+          {/* Accent line */}
+          <div className="w-80 h-[2px] mx-auto mb-6" style={{ background: 'linear-gradient(90deg, transparent, #FF0066, #7B2FBE, transparent)' }}></div>
+          {/* Names */}
+          <div className="flex items-center justify-center gap-8 mb-10">
+            <span className="font-oswald text-2xl md:text-3xl font-light tracking-[0.4em] uppercase" style={{ color: '#FF0066' }}>MICHAEL</span>
+            <span className="text-white/20 text-3xl">×</span>
+            <span className="font-oswald text-2xl md:text-3xl font-light tracking-[0.4em] uppercase" style={{ color: '#7B2FBE' }}>LUCIFER</span>
+          </div>
+          {/* Enter text */}
+          <div className="font-oswald text-xs tracking-[1em] uppercase animate-neon-flicker" style={{ color: '#00F0FF80' }}>
+            Zutritt gewährt — Willkommen in der Zone
           </div>
         </div>
+        {/* Scanline overlay */}
+        <div className="fixed inset-0 scanlines opacity-[0.02] pointer-events-none"></div>
       </div>
     );
   }
 
+  const themeColor = getThemeColor();
+
   return (
-    <div className="relative h-screen w-screen flex flex-col items-center justify-center bg-[#080202] overflow-hidden select-none">
+    <div className="relative h-screen w-screen flex flex-col items-center justify-center bg-[#0a0a0f] overflow-hidden select-none">
       <Atmosphere />
 
       {/* Central Visual Component */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <RitualCircle theme={currentStage.theme} progress={progress} />
+        <HexGrid theme={currentStage.theme} progress={progress} />
       </div>
 
       <div className="relative z-20 flex flex-col items-center max-w-5xl px-12 w-full">
         
-        {/* Poetic Header */}
-        <div className="mb-24 text-center">
-          <h2 className="font-cinzel text-red-950 text-[10px] md:text-xs tracking-[1.8em] mb-4 uppercase font-bold">
-            Feuer • Asche • Neubeginn
+        {/* Top branded header */}
+        <div className="mb-20 text-center">
+          <h2 className="font-bebas text-4xl md:text-6xl tracking-[0.2em] mb-2 animate-glitch" style={{ color: themeColor, textShadow: `0 0 30px ${themeColor}40` }}>
+            GREENZONE420
           </h2>
-          <div className="h-[1px] w-64 mx-auto bg-gradient-to-r from-transparent via-red-900/30 to-transparent"></div>
+          <div className="h-[1px] w-48 mx-auto" style={{ background: `linear-gradient(90deg, transparent, ${themeColor}60, transparent)` }}></div>
         </div>
 
-        {/* Narrative Section */}
-        <div className="text-center min-h-[200px] flex flex-col items-center justify-center">
-          <h1 className={`font-cinzel text-5xl md:text-8xl mb-8 transition-all duration-1000 uppercase tracking-[0.2em] font-black ${getThemeStyles()}`}>
+        {/* Stage label */}
+        <div className="text-center min-h-[180px] flex flex-col items-center justify-center">
+          <div className="font-oswald text-[10px] tracking-[0.8em] uppercase mb-4 opacity-40" style={{ color: themeColor }}>
+            // PHASE {currentStage.id} VON {LOADING_STAGES.length}
+          </div>
+          <h1 
+            className="font-bebas text-6xl md:text-9xl mb-6 transition-all duration-700 uppercase tracking-[0.1em]"
+            style={{ color: themeColor, textShadow: `0 0 40px ${themeColor}30, 0 0 80px ${themeColor}10` }}
+          >
             {currentStage.label}
           </h1>
-          <div className="h-[1px] w-16 bg-red-900/40 rounded-full mb-10"></div>
-          <div className="max-w-2xl px-6">
-            <p className="text-red-100/30 font-cinzel text-sm md:text-base tracking-[0.4em] leading-relaxed uppercase italic">
+          <div className="h-[2px] w-12 rounded-full mb-8" style={{ backgroundColor: `${themeColor}40` }}></div>
+          <div className="max-w-xl px-4">
+            <p className="font-oswald text-sm md:text-base tracking-[0.3em] leading-relaxed uppercase font-light" style={{ color: `${themeColor}50` }}>
               "{dynamicQuote}"
             </p>
           </div>
         </div>
 
-        {/* The Fire Loading Interface */}
-        <div className="w-full mt-24 relative px-16 max-w-4xl">
-          <div className="flex justify-between items-end mb-4 font-cinzel text-[10px] tracking-[0.5em] uppercase font-bold opacity-60">
-            <span className="text-red-900">{statusText}</span>
-            <span className="text-orange-500">{Math.round(progress)}%</span>
+        {/* Loading bar */}
+        <div className="w-full mt-20 relative px-8 max-w-3xl">
+          <div className="flex justify-between items-end mb-3 font-oswald text-[10px] tracking-[0.5em] uppercase font-medium">
+            <span style={{ color: `${themeColor}80` }}>{statusText}</span>
+            <span className="font-bebas text-2xl" style={{ color: themeColor }}>{Math.round(progress)}%</span>
           </div>
           
-          <div className="h-[2px] w-full bg-red-950/20 relative overflow-hidden rounded-full border border-red-900/10 backdrop-blur-sm">
+          {/* Progress bar container */}
+          <div className="h-[3px] w-full relative overflow-hidden rounded-full" style={{ backgroundColor: `${themeColor}10` }}>
             <div 
-              className="h-full bg-gradient-to-r from-red-950 via-red-700 to-orange-500 transition-all duration-700 ease-out shadow-[0_0_20px_rgba(153,27,27,0.4)]"
-              style={{ width: `${progress}%` }}
-            ></div>
+              className="h-full transition-all duration-500 ease-out relative"
+              style={{ 
+                width: `${progress}%`,
+                background: `linear-gradient(90deg, ${themeColor}40, ${themeColor})`,
+                boxShadow: `0 0 20px ${themeColor}60, 0 0 40px ${themeColor}20`
+              }}
+            >
+              {/* Animated stripes on bar */}
+              <div 
+                className="absolute inset-0 opacity-30"
+                style={{
+                  backgroundImage: `repeating-linear-gradient(90deg, transparent, transparent 10px, ${themeColor}40 10px, ${themeColor}40 20px)`,
+                  backgroundSize: '40px 100%',
+                  animation: 'stripe-move 1s linear infinite'
+                }}
+              ></div>
+            </div>
           </div>
           
-          {/* Petal Stage Indicators */}
-          <div className="flex justify-between mt-10 px-2 opacity-20">
-            {LOADING_STAGES.map((_, i) => (
-              <div 
-                key={i} 
-                className={`w-1.5 h-1.5 rotate-45 transition-all duration-1000 ${
-                  stageIndex >= i ? 'bg-orange-500 scale-125 border border-orange-400 shadow-[0_0_8px_#f97316]' : 'bg-red-950'
-                }`}
-              ></div>
+          {/* Stage indicators */}
+          <div className="flex justify-between mt-8 px-1">
+            {LOADING_STAGES.map((stage, i) => (
+              <div key={i} className="flex flex-col items-center gap-2">
+                <div 
+                  className={`w-2 h-2 transition-all duration-500 ${stageIndex >= i ? 'scale-125' : 'opacity-20'}`}
+                  style={{ 
+                    backgroundColor: stageIndex >= i ? themeColor : '#ffffff20',
+                    boxShadow: stageIndex >= i ? `0 0 8px ${themeColor}` : 'none',
+                    clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)'
+                  }}
+                ></div>
+                <span 
+                  className="font-oswald text-[8px] tracking-[0.2em] uppercase hidden md:block"
+                  style={{ color: stageIndex >= i ? `${themeColor}60` : '#ffffff10' }}
+                >
+                  {stage.label}
+                </span>
+              </div>
             ))}
           </div>
         </div>
       </div>
       
-      {/* Bottom Footer */}
-      <div className="absolute bottom-12 w-full text-center flex flex-col items-center gap-6">
-        <p className="text-[10px] text-red-950 uppercase tracking-[1.2em] font-cinzel font-bold">
-          Greenzone420 • Michael • Lucifer
-        </p>
+      {/* Bottom footer with names */}
+      <div className="absolute bottom-10 w-full text-center flex flex-col items-center gap-4">
+        <div className="flex items-center gap-6">
+          <span className="font-oswald text-[10px] tracking-[0.6em] uppercase font-medium" style={{ color: '#FF006680' }}>MICHAEL</span>
+          <span className="font-bebas text-lg" style={{ color: '#00F0FF30' }}>×</span>
+          <span className="font-oswald text-[10px] tracking-[0.6em] uppercase font-medium" style={{ color: '#7B2FBE80' }}>LUCIFER</span>
+        </div>
+        <div className="font-oswald text-[8px] tracking-[1em] uppercase" style={{ color: '#ffffff10' }}>
+          GREENZONE420 • LOS SANTOS • FSK 18+
+        </div>
       </div>
 
-      {/* Cinematic Bordering */}
-      <div className="fixed inset-0 border-[50px] border-black/50 pointer-events-none"></div>
-      <div className="fixed inset-0 border-[1px] border-red-900/10 pointer-events-none m-14 shadow-[inset_0_0_100px_rgba(0,0,0,0.9)]"></div>
+      {/* Cinematic borders - sleek neon */}
+      <div className="fixed inset-0 border-[1px] pointer-events-none m-6" style={{ borderColor: `${themeColor}08` }}></div>
+      {/* Corner accents */}
+      <div className="fixed top-6 left-6 w-8 h-8 pointer-events-none" style={{ borderTop: `1px solid ${themeColor}20`, borderLeft: `1px solid ${themeColor}20` }}></div>
+      <div className="fixed top-6 right-6 w-8 h-8 pointer-events-none" style={{ borderTop: `1px solid ${themeColor}20`, borderRight: `1px solid ${themeColor}20` }}></div>
+      <div className="fixed bottom-6 left-6 w-8 h-8 pointer-events-none" style={{ borderBottom: `1px solid ${themeColor}20`, borderLeft: `1px solid ${themeColor}20` }}></div>
+      <div className="fixed bottom-6 right-6 w-8 h-8 pointer-events-none" style={{ borderBottom: `1px solid ${themeColor}20`, borderRight: `1px solid ${themeColor}20` }}></div>
     </div>
   );
 };

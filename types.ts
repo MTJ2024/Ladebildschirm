@@ -3,7 +3,7 @@ export interface LoadingStage {
   id: number;
   label: string;
   subtext: string;
-  theme: 'awakening' | 'purification' | 'enlightenment' | 'arrival';
+  theme: 'heist' | 'chase' | 'empire' | 'takeover' | 'reign';
 }
 
 export enum AppState {
