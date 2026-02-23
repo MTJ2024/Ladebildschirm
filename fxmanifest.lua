@@ -16,5 +16,6 @@ client_script 'client.lua'
 -- Files served via NUI
 files {
     'html/index.html',
-    'html/assets/*'
+    'html/assets/*',
+    'html/videos/*'
 }

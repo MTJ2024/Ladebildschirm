@@ -12,6 +12,7 @@ export default defineConfig(({ mode }) => {
       },
       build: {
         outDir: 'html',
+        emptyOutDir: false,
       },
       plugins: [react()],
       define: {
