@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import VideoBackground from './VideoBackground';
+import ImageBackground from './ImageBackground';
 
 interface Particle {
   id: number;
@@ -34,8 +34,8 @@ const Atmosphere: React.FC = () => {
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#0a0a0f]">
-      {/* GTA V Cinematic Video Background — haze overlay is built into the component */}
-      <VideoBackground />
+      {/* GTA V City Images with Ken Burns camera pan/zoom — haze overlay built in */}
+      <ImageBackground />
 
       {/* City gradient base (visible when no video or through haze) */}
       <div className="absolute inset-x-0 bottom-0 h-[40vh] opacity-30 bg-[radial-gradient(ellipse_at_50%_100%,#1a0030_0%,transparent_70%)]"></div>

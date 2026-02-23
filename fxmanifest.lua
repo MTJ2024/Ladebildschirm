@@ -17,5 +17,5 @@ client_script 'client.lua'
 files {
     'html/index.html',
     'html/assets/*',
-    'html/videos/*'
+    'html/images/*'
 }
