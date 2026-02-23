@@ -25,10 +25,10 @@ const VideoBackground: React.FC = () => {
   const currentSourceIndex = useRef(0);
   const switchTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const getNextSourceIndex = useCallback(() => {
+  const getNextSourceIndex = () => {
     currentSourceIndex.current = (currentSourceIndex.current + 1) % VIDEO_SOURCES.length;
     return currentSourceIndex.current;
-  }, []);
+  };
 
   const switchVideo = useCallback(() => {
     const nextIdx = getNextSourceIndex();
@@ -37,7 +37,7 @@ const VideoBackground: React.FC = () => {
     if (nextVideo) {
       nextVideo.src = VIDEO_SOURCES[nextIdx];
       nextVideo.load();
-      nextVideo.play().catch(() => {});
+      nextVideo.play().catch(e => console.warn('Video preload play failed:', e));
     }
 
     setIsAActive(prev => !prev);
@@ -65,7 +65,7 @@ const VideoBackground: React.FC = () => {
     videoA.load();
     
     const handleCanPlay = () => {
-      videoA.play().catch(() => {});
+      videoA.play().catch(e => console.warn('Video autoplay failed:', e));
       scheduleSwitch();
     };
 
@@ -96,7 +96,7 @@ const VideoBackground: React.FC = () => {
     // Loop fallback: if only one video or if ended before switch
     const handleEnded = () => {
       activeVideo.currentTime = 0;
-      activeVideo.play().catch(() => {});
+      activeVideo.play().catch(e => console.warn('Video loop play failed:', e));
     };
     activeVideo.addEventListener('ended', handleEnded);
 

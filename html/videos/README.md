@@ -33,4 +33,4 @@ Place your GTA V cinematic camera videos here as `.mp4` files.
 
 ## Important
 
-After running `npm run build`, you must copy your video files into `html/videos/` since the build clears the html directory. Alternatively, place your videos here and they will be preserved if you avoid a clean build.
+The build is configured with `emptyOutDir: false` so your video files in `html/videos/` are preserved when running `npm run build`. However, if you manually delete the `html/` directory, you will need to re-add your videos.
