@@ -92,7 +92,7 @@ const App: React.FC = () => {
             <span className="font-oswald text-2xl md:text-3xl font-light tracking-[0.4em] uppercase" style={{ color: '#7B2FBE' }}>LUCIFER</span>
           </div>
           {/* Enter text */}
-          <div className="font-oswald text-xs tracking-[1em] uppercase animate-neon-flicker" style={{ color: '#00F0FF80' }}>
+          <div className="font-oswald text-base tracking-[1em] uppercase animate-neon-flicker" style={{ color: '#00F0FF80' }}>
             Zutritt gewährt — Willkommen in der Zone
           </div>
         </div>
@@ -125,7 +125,7 @@ const App: React.FC = () => {
 
         {/* Stage label */}
         <div className="text-center min-h-[180px] flex flex-col items-center justify-center">
-          <div className="font-oswald text-[10px] tracking-[0.8em] uppercase mb-4 opacity-40" style={{ color: themeColor }}>
+          <div className="font-oswald text-sm tracking-[0.8em] uppercase mb-4 opacity-40" style={{ color: themeColor }}>
             // PHASE {currentStage.id} VON {LOADING_STAGES.length}
           </div>
           <h1 
@@ -144,7 +144,7 @@ const App: React.FC = () => {
 
         {/* Loading bar */}
         <div className="w-full mt-20 relative px-8 max-w-3xl">
-          <div className="flex justify-between items-end mb-3 font-oswald text-[10px] tracking-[0.5em] uppercase font-medium">
+          <div className="flex justify-between items-end mb-3 font-oswald text-sm tracking-[0.5em] uppercase font-medium">
             <span style={{ color: `${themeColor}80` }}>{statusText}</span>
             <span className="font-bebas text-2xl" style={{ color: themeColor }}>{Math.round(progress)}%</span>
           </div>
@@ -184,7 +184,7 @@ const App: React.FC = () => {
                   }}
                 ></div>
                 <span 
-                  className="font-oswald text-[8px] tracking-[0.2em] uppercase hidden md:block"
+                  className="font-oswald text-xs tracking-[0.2em] uppercase hidden md:block"
                   style={{ color: stageIndex >= i ? `${themeColor}60` : '#ffffff10' }}
                 >
                   {stage.label}
@@ -198,11 +198,11 @@ const App: React.FC = () => {
       {/* Bottom footer with names */}
       <div className="absolute bottom-10 w-full text-center flex flex-col items-center gap-4">
         <div className="flex items-center gap-6">
-          <span className="font-oswald text-[10px] tracking-[0.6em] uppercase font-medium" style={{ color: '#FF006680' }}>MICHAEL</span>
+          <span className="font-oswald text-sm tracking-[0.6em] uppercase font-medium" style={{ color: '#FF006680' }}>MICHAEL</span>
           <span className="font-bebas text-lg" style={{ color: '#00F0FF30' }}>×</span>
-          <span className="font-oswald text-[10px] tracking-[0.6em] uppercase font-medium" style={{ color: '#7B2FBE80' }}>LUCIFER</span>
+          <span className="font-oswald text-sm tracking-[0.6em] uppercase font-medium" style={{ color: '#7B2FBE80' }}>LUCIFER</span>
         </div>
-        <div className="font-oswald text-[8px] tracking-[1em] uppercase" style={{ color: '#ffffff10' }}>
+        <div className="font-oswald text-xs tracking-[1em] uppercase" style={{ color: '#ffffff10' }}>
           GREENZONE420 • LOS SANTOS • FSK 18+
         </div>
       </div>
