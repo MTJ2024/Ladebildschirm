@@ -52,7 +52,10 @@ const App: React.FC = () => {
     
     if (currentStageIdx !== stageIndex) {
       setStageIndex(currentStageIdx);
-      updateQuote(LOADING_STAGES[currentStageIdx].label);
+      const stage = LOADING_STAGES[currentStageIdx];
+      if (stage) {
+        updateQuote(stage.label);
+      }
     }
 
     if (progress >= 100 && appState === AppState.LOADING) {
@@ -60,7 +63,7 @@ const App: React.FC = () => {
     }
   }, [progress, stageIndex, updateQuote, appState]);
 
-  const currentStage = LOADING_STAGES[stageIndex];
+  const currentStage = LOADING_STAGES[stageIndex] ?? LOADING_STAGES[0];
 
   const getThemeColor = () => {
     switch (currentStage.theme) {
