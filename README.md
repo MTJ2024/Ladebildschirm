@@ -1,20 +1,37 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# MTJ SCRIPTS – Ladebildschirm
 
-# Run and deploy your AI Studio app
+Verkaufsbereiter FiveM-Ladebildschirm mit zentraler Konfiguration.
 
-This contains everything you need to run your app locally.
+## Schnellstart
 
-View your app in AI Studio: https://ai.studio/apps/drive/19zx446wW67vi-4Vx9zPwOnWRH2oX4Ya8
+Voraussetzung: **Node.js**
 
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
+1. Abhängigkeiten installieren:
    `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
+2. Development-Preview starten:
    `npm run dev`
+3. Production-Build erstellen:
+   `npm run build`
+
+## Konfiguration
+
+Alle Käufer-Anpassungen laufen über:
+
+- `/home/runner/work/Ladebildschirm/Ladebildschirm/config.ts`
+
+Dort können u. a. geändert werden:
+
+- Servername / Footer / Texte
+- Ladephasen
+- Header-Text
+- KI-Zitate (an/aus, Prompt, Fallback)
+- Preview-Geschwindigkeit
+
+## Optionale KI-Zitate (Gemini)
+
+Wenn KI-Zitate genutzt werden sollen, API-Key setzen:
+
+`.env`:
+`API_KEY=dein_key`
+
+Wenn kein Key gesetzt ist oder ein Fehler auftritt, wird automatisch der Fallback-Text aus `config.ts` genutzt.

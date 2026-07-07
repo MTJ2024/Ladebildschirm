@@ -1,5 +1,5 @@
 {
-  "name": "Greenzone420 Ritual Loading Screen",
-  "description": "An atmospheric loading experience blending themes of sacrifice, resurrection, and liberation, crafted with high-end visual aesthetics for Greenzone420.",
+  "name": "MTJ Scripts Ladebildschirm",
+  "description": "Verkaufsbereiter FiveM-Ladebildschirm mit zentraler Konfiguration über config.ts und optionalen Gemini-Zitaten.",
   "requestFramePermissions": []
 }
