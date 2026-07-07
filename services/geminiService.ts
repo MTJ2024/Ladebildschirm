@@ -2,10 +2,19 @@
 import { GoogleGenAI } from "@google/genai";
 import { CONFIG } from "../config";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+let _ai: GoogleGenAI | null = null;
+
+function getClient(): GoogleGenAI | null {
+  if (!CONFIG.useAI) return null;
+  const key = process.env.API_KEY;
+  if (!key) return null;
+  if (!_ai) _ai = new GoogleGenAI({ apiKey: key });
+  return _ai;
+}
 
 export async function getThematicQuote(stage: string): Promise<string> {
-  if (!CONFIG.useAI) return CONFIG.fallbackQuote;
+  const ai = getClient();
+  if (!ai) return CONFIG.fallbackQuote;
   try {
     const prompt = CONFIG.aiPrompt.replace("{stage}", stage);
     const response = await ai.models.generateContent({

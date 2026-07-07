@@ -68,7 +68,7 @@ export const CONFIG = {
   // ----------------------------------------------------------------
 
   /** KI-Zitate aktivieren (true = an, false = aus) */
-  useAI: true,
+  useAI: false,
 
   /**
    * KI-Prompt: Beschreibt den Stil der generierten Zitate.
