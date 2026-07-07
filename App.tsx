@@ -4,13 +4,14 @@ import Atmosphere from './components/Atmosphere';
 import { RitualCircle, LOADING_STAGES } from './constants';
 import { AppState } from './types';
 import { getThematicQuote } from './services/geminiService';
+import { CONFIG } from './config';
 
 const App: React.FC = () => {
   const [progress, setProgress] = useState(0);
   const [stageIndex, setStageIndex] = useState(0);
   const [appState, setAppState] = useState<AppState>(AppState.LOADING);
-  const [dynamicQuote, setDynamicQuote] = useState("In der Asche ruht die Pracht...");
-  const [statusText, setStatusText] = useState("Wurzeln schlagen...");
+  const [dynamicQuote, setDynamicQuote] = useState(CONFIG.fallbackQuote);
+  const [statusText, setStatusText] = useState("Verbinde...");
 
   const updateQuote = useCallback(async (stageLabel: string) => {
     const quote = await getThematicQuote(stageLabel);
@@ -37,9 +38,9 @@ const App: React.FC = () => {
             clearInterval(interval);
             return 100;
           }
-          return prev + 0.35;
+          return prev + CONFIG.previewSpeed;
         });
-      }, 50);
+      }, CONFIG.previewInterval);
       return () => clearInterval(interval);
     }
   }, []);
@@ -49,7 +50,7 @@ const App: React.FC = () => {
       Math.floor((progress / 100) * LOADING_STAGES.length),
       LOADING_STAGES.length - 1
     );
-    
+
     if (currentStageIdx !== stageIndex) {
       setStageIndex(currentStageIdx);
       updateQuote(LOADING_STAGES[currentStageIdx].label);
@@ -64,11 +65,11 @@ const App: React.FC = () => {
 
   const getThemeStyles = () => {
     switch (currentStage.theme) {
-      case 'awakening': return 'text-red-900';
+      case 'awakening':    return 'text-red-900';
       case 'purification': return 'text-red-700';
-      case 'enlightenment': return 'text-orange-600 drop-shadow-[0_0_15px_rgba(234,88,12,0.4)]';
-      case 'arrival': return 'text-amber-100 brightness-125';
-      default: return 'text-red-500';
+      case 'enlightenment':return 'text-orange-600 drop-shadow-[0_0_15px_rgba(234,88,12,0.4)]';
+      case 'arrival':      return 'text-amber-100 brightness-125';
+      default:             return 'text-red-500';
     }
   };
 
@@ -78,14 +79,14 @@ const App: React.FC = () => {
         <Atmosphere />
         <div className="z-10 animate-heartbeat">
           <h1 className="font-cinzel text-7xl md:text-9xl mb-4 text-red-600 drop-shadow-[0_0_50px_rgba(153,27,27,0.6)] tracking-[0.4em] uppercase font-bold">
-            GREENZONE420
+            {CONFIG.serverName}
           </h1>
           <div className="w-64 h-[1px] bg-gradient-to-r from-transparent via-red-800 to-transparent mx-auto mb-8"></div>
           <p className="text-xl md:text-2xl font-cinzel tracking-[0.5em] uppercase text-amber-50/70 mb-12 italic">
-            Die Blüte ist Erwacht
+            {CONFIG.serverTagline}
           </p>
           <div className="text-[10px] font-cinzel text-red-950 uppercase tracking-[1em] animate-pulse">
-            Eintritt Gewährt
+            {CONFIG.serverReady}
           </div>
         </div>
       </div>
@@ -96,22 +97,19 @@ const App: React.FC = () => {
     <div className="relative h-screen w-screen flex flex-col items-center justify-center bg-[#080202] overflow-hidden select-none">
       <Atmosphere />
 
-      {/* Central Visual Component */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <RitualCircle theme={currentStage.theme} progress={progress} />
       </div>
 
       <div className="relative z-20 flex flex-col items-center max-w-5xl px-12 w-full">
-        
-        {/* Poetic Header */}
+
         <div className="mb-24 text-center">
           <h2 className="font-cinzel text-red-950 text-[10px] md:text-xs tracking-[1.8em] mb-4 uppercase font-bold">
-            Feuer • Asche • Neubeginn
+            {CONFIG.loadingHeader}
           </h2>
           <div className="h-[1px] w-64 mx-auto bg-gradient-to-r from-transparent via-red-900/30 to-transparent"></div>
         </div>
 
-        {/* Narrative Section */}
         <div className="text-center min-h-[200px] flex flex-col items-center justify-center">
           <h1 className={`font-cinzel text-5xl md:text-8xl mb-8 transition-all duration-1000 uppercase tracking-[0.2em] font-black ${getThemeStyles()}`}>
             {currentStage.label}
@@ -124,25 +122,23 @@ const App: React.FC = () => {
           </div>
         </div>
 
-        {/* The Fire Loading Interface */}
         <div className="w-full mt-24 relative px-16 max-w-4xl">
           <div className="flex justify-between items-end mb-4 font-cinzel text-[10px] tracking-[0.5em] uppercase font-bold opacity-60">
             <span className="text-red-900">{statusText}</span>
             <span className="text-orange-500">{Math.round(progress)}%</span>
           </div>
-          
+
           <div className="h-[2px] w-full bg-red-950/20 relative overflow-hidden rounded-full border border-red-900/10 backdrop-blur-sm">
-            <div 
+            <div
               className="h-full bg-gradient-to-r from-red-950 via-red-700 to-orange-500 transition-all duration-700 ease-out shadow-[0_0_20px_rgba(153,27,27,0.4)]"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
-          
-          {/* Petal Stage Indicators */}
+
           <div className="flex justify-between mt-10 px-2 opacity-20">
             {LOADING_STAGES.map((_, i) => (
-              <div 
-                key={i} 
+              <div
+                key={i}
                 className={`w-1.5 h-1.5 rotate-45 transition-all duration-1000 ${
                   stageIndex >= i ? 'bg-orange-500 scale-125 border border-orange-400 shadow-[0_0_8px_#f97316]' : 'bg-red-950'
                 }`}
@@ -151,15 +147,13 @@ const App: React.FC = () => {
           </div>
         </div>
       </div>
-      
-      {/* Bottom Footer */}
+
       <div className="absolute bottom-12 w-full text-center flex flex-col items-center gap-6">
         <p className="text-[10px] text-red-950 uppercase tracking-[1.2em] font-cinzel font-bold">
-          Greenzone420 • Michael • Lucifer
+          {CONFIG.serverFooter}
         </p>
       </div>
 
-      {/* Cinematic Bordering */}
       <div className="fixed inset-0 border-[50px] border-black/50 pointer-events-none"></div>
       <div className="fixed inset-0 border-[1px] border-red-900/10 pointer-events-none m-14 shadow-[inset_0_0_100px_rgba(0,0,0,0.9)]"></div>
     </div>
